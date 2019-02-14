@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{%  block explain_contents %}
+
+<body>
+<center>
+<h2>Polls 질문리스트</h2>
+<h4>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+<br>
+<a href="{% url 'home' %}"> 홈으로 </a>
+</h4>
+</center>
+</body>
+</html>
+
+{%  endblock explain_contents %}
